@@ -1,9 +1,9 @@
-package com.example.TestService2.dto;
-
+package com.example.TestService.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,5 +17,5 @@ public class UserDTO {
 
     private String fullName;
 
-    private BranchDTO branch;
+    private List<BranchDTO> branch;
 }
