@@ -19,14 +19,14 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
-    private final String URL_USER = "http://localhost:8081/api/user";
-    private final String URL_BRANCH = "http://localhost:8081/api/branch";
-
     private final NotificationRepository notificationRepository;
+
     private final UserRepository userRepository;
+
     private final BranchRepository branchRepository;
 
     private final NotificationMapper notificationMapper;
+
     private final AppMapper appMapper;
 
     @Override
@@ -37,11 +37,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Boolean getUserDTO(){
-        WebClient webClient = WebClient.builder()
-                .baseUrl(URL_USER)
-                .build();
-
+    public Boolean getUserDTO(WebClient webClient){
         User user = appMapper.mapUserToUserDTO(webClient.get()
                 .retrieve()
                 .bodyToMono(UserDTO.class).block());
@@ -52,11 +48,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public Boolean getBranchDTO(){
-        WebClient webClient = WebClient.builder()
-                .baseUrl(URL_BRANCH)
-                .build();
-
+    public Boolean getBranchDTO(WebClient webClient){
         Branch branch = appMapper.mapBranchToBranchDTO(webClient.get()
                 .retrieve()
                 .bodyToMono(BranchDTO.class).block());
