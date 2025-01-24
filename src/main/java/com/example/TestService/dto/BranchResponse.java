@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class BranchDTO {
+public class BranchResponse {
     private String branchId;
 
     private String name;
